@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Modul1" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/bni_orange</item>
+        <item name="colorPrimaryVariant">@color/bni_orange_dark</item>
+        <item name="colorSecondary">@color/bni_green</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+</resources>
