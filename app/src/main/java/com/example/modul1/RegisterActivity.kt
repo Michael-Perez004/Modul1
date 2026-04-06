@@ -1,5 +1,6 @@
 package com.example.modul1
 
+import android.content.Intent // ⬅️ TAMBAHAN
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -20,7 +21,12 @@ class RegisterActivity : AppCompatActivity() {
         val etPassword = findViewById<EditText>(R.id.etRegisterPassword)
         val btnCreateAccount = findViewById<Button>(R.id.btnCreateAccount)
 
-        ivBack.setOnClickListener { finish() }
+        // 🔙 BACK → LOGIN (Explicit Intent)
+        ivBack.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         btnCreateAccount.setOnClickListener {
             if (
@@ -33,6 +39,10 @@ class RegisterActivity : AppCompatActivity() {
                 Toast.makeText(this, "Semua field wajib diisi", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this, "Registrasi demo berhasil", Toast.LENGTH_SHORT).show()
+
+                // ✅ REGISTER → LOGIN (Explicit Intent)
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
                 finish()
             }
         }

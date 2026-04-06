@@ -19,18 +19,20 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tvLupaPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="BNI"
-                android:textColor="@android:color/white"
-                android:textSize="36sp"
+                android:layout_gravity="end"
+                android:layout_marginTop="10dp"
+                android:text="@string/lupa_password"
+                android:textColor="@color/bni_orange_dark"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="Mobile Banking"
+                android:text="@string/mobile_banking"
                 android:textColor="@android:color/white"
                 android:textSize="16sp" />
         </LinearLayout>
@@ -47,7 +49,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Selamat Datang"
+                android:text="@string/selamat_datang"
                 android:textColor="@color/text_dark"
                 android:textSize="22sp"
                 android:textStyle="bold" />
@@ -56,7 +58,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
-                android:text="Masuk untuk melanjutkan"
+                android:text="@string/masuk_lanjut"
                 android:textColor="@color/text_muted"
                 android:textSize="14sp" />
 
@@ -72,7 +74,7 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:contentDescription="User ID"
+                    android:contentDescription="@string/user_id"
                     android:src="@drawable/ic_user" />
 
                 <EditText
@@ -83,7 +85,7 @@
                     android:layout_weight="1"
                     android:autofillHints="username"
                     android:background="@android:color/transparent"
-                    android:hint="User ID"
+                    android:hint="@string/user_id"
                     android:inputType="text"
                     android:textColor="@color/text_dark"
                     android:textColorHint="@color/text_hint" />
@@ -101,7 +103,7 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:contentDescription="Password"
+                    android:contentDescription="@string/password"
                     android:src="@drawable/ic_lock" />
 
                 <EditText
@@ -112,7 +114,7 @@
                     android:layout_weight="1"
                     android:autofillHints="password"
                     android:background="@android:color/transparent"
-                    android:hint="Password"
+                    android:hint="@string/password"
                     android:inputType="textPassword"
                     android:textColor="@color/text_dark"
                     android:textColorHint="@color/text_hint" />
@@ -123,7 +125,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:layout_marginTop="10dp"
-                android:text="Lupa Password?"
+                android:text="@string/lupa_password"
                 android:textColor="@color/bni_orange_dark"
                 android:textStyle="bold" />
 
@@ -133,7 +135,7 @@
                 android:layout_height="54dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/bg_button_primary"
-                android:text="LOGIN"
+                android:text="@string/login"
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />
 
@@ -143,7 +145,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="18dp"
-                android:text="Belum punya akun? Daftar"
+                android:text="@string/register"
                 android:textColor="@color/bni_orange_dark"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -153,8 +155,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="18dp"
-            android:text="2026 Demo UI Tugas Kampus"
+            android:text="@string/demo"
             android:textColor="#F6F6F6"
             android:textSize="12sp" />
+
     </LinearLayout>
 </ScrollView>
