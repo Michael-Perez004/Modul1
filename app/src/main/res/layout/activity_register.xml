@@ -20,7 +20,7 @@
             android:background="@drawable/bg_card"
             android:contentDescription="@string/kembali"
             android:padding="8dp"
-            android:src="@drawable/ic_back"
+            android:src="@android:drawable/ic_media_previous"
             app:tint="@color/bni_orange_dark" />
 
         <TextView
@@ -61,7 +61,6 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:contentDescription="@string/nama_lengkap"
                     android:src="@drawable/ic_user" />
 
                 <EditText
@@ -70,12 +69,8 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"
-                    android:autofillHints="name"
                     android:background="@android:color/transparent"
-                    android:hint="@string/nama_lengkap"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/text_dark"
-                    android:textColorHint="@color/text_hint" />
+                    android:hint="@string/nama_lengkap" />
             </LinearLayout>
 
             <!-- Email -->
@@ -91,7 +86,6 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:contentDescription="@string/email"
                     android:src="@drawable/ic_email" />
 
                 <EditText
@@ -100,12 +94,8 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"
-                    android:autofillHints="emailAddress"
                     android:background="@android:color/transparent"
-                    android:hint="@string/email"
-                    android:inputType="textEmailAddress"
-                    android:textColor="@color/text_dark"
-                    android:textColorHint="@color/text_hint" />
+                    android:hint="@string/email" />
             </LinearLayout>
 
             <!-- Phone -->
@@ -121,7 +111,6 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:contentDescription="@string/nomor_hp"
                     android:src="@drawable/ic_phone" />
 
                 <EditText
@@ -130,12 +119,8 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"
-                    android:autofillHints="phone"
                     android:background="@android:color/transparent"
-                    android:hint="@string/nomor_hp"
-                    android:inputType="phone"
-                    android:textColor="@color/text_dark"
-                    android:textColorHint="@color/text_hint" />
+                    android:hint="@string/nomor_hp" />
             </LinearLayout>
 
             <!-- User ID -->
@@ -151,7 +136,6 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:contentDescription="@string/user_id"
                     android:src="@drawable/ic_user" />
 
                 <EditText
@@ -160,12 +144,8 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"
-                    android:autofillHints="username"
                     android:background="@android:color/transparent"
-                    android:hint="@string/user_id"
-                    android:inputType="text"
-                    android:textColor="@color/text_dark"
-                    android:textColorHint="@color/text_hint" />
+                    android:hint="@string/user_id" />
             </LinearLayout>
 
             <!-- Password -->
@@ -181,7 +161,6 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:contentDescription="@string/password"
                     android:src="@drawable/ic_lock" />
 
                 <EditText
@@ -190,21 +169,19 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"
-                    android:autofillHints="newPassword"
                     android:background="@android:color/transparent"
                     android:hint="@string/password"
-                    android:inputType="textPassword"
-                    android:textColor="@color/text_dark"
-                    android:textColorHint="@color/text_hint" />
+                    android:inputType="textPassword" />
             </LinearLayout>
 
+            <!-- 🔥 FIX DI SINI -->
             <Button
-                android:id="@+id/btnCreateAccount"
+                android:id="@+id/btnBuatAkun"
                 android:layout_width="match_parent"
                 android:layout_height="54dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/bg_button_primary"
-                android:text="@string/buat_akun"
+                android:text="BUAT AKUN"
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />
         </LinearLayout>
