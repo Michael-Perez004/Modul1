@@ -1,13 +1,28 @@
-# BNI Mobile Banking UI Demo
+# 📱 Demo UI Mobile Banking BNI
 
-Aplikasi Android UI Login & Register (Demo Tugas Kampus)
+Aplikasi Android sederhana yang menampilkan UI Login, Registrasi, Home, dan Forgot Password dengan desain modern bergaya BNI.  
+Dibuat sebagai **tugas kampus** menggunakan Kotlin dan XML.
 
-## Fitur
-- Login Page
-- Register Page
-- UI Modern (BNI Style)
+---
 
-## Teknologi
+## ✨ Fitur
+
+- 🔐 Halaman Login
+- 📝 Halaman Registrasi
+- 🔁 Halaman Forgot Password
+- 🏠 Halaman Home
+- 🔗 Navigasi antar halaman menggunakan **Explicit Intent**
+- 🎨 UI Modern (Gaya Mobile Banking BNI)
+
+---
+
+## 🛠️ Teknologi
+
 - Kotlin
-- XML Layout
+- XML Layout (Android)
 - Material Design
+
+---
+
+
+
