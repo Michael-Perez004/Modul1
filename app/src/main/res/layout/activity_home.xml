@@ -14,9 +14,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/home_title"
-            android:textSize="26sp"
+            android:text="@string/bni"
             android:textStyle="bold"
+            android:textSize="34sp"
             android:textColor="@android:color/white"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp" />
@@ -24,145 +24,164 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/home_subtitle"
-            android:textSize="18sp"
+            android:text="@string/menu_implicit_intent"
+            android:textSize="14sp"
             android:textColor="@android:color/white"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="8dp"
             android:layout_marginBottom="20dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:background="@drawable/bg_card"
+            android:orientation="vertical"
             android:padding="20dp">
 
+            <!-- SHARE -->
             <EditText
                 android:id="@+id/etShareText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Input text"
+                android:hint="@string/input_text"
+                android:autofillHints="none"
+                android:inputType="text"
                 android:background="@drawable/bg_input"
-                android:padding="12dp" />
+                android:padding="12dp"
+                android:textColor="@android:color/black"
+                android:textColorHint="#666666"/>
 
             <Button
                 android:id="@+id/btnShare"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="SHARE TO"
+                android:text="@string/share_to"
                 android:layout_marginTop="10dp" />
 
+            <!-- PHONE -->
             <EditText
                 android:id="@+id/etPhone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Input phone number"
+                android:hint="@string/input_phone_number"
+                android:autofillHints="phone"
                 android:inputType="phone"
                 android:background="@drawable/bg_input"
                 android:padding="12dp"
-                android:layout_marginTop="16dp" />
+                android:layout_marginTop="16dp"
+                android:textColor="@android:color/black"
+                android:textColorHint="#666666"/>
 
             <Button
                 android:id="@+id/btnCall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="CALL"
+                android:text="@string/call"
                 android:layout_marginTop="10dp" />
 
+            <!-- LOCATION -->
             <EditText
                 android:id="@+id/etLocation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Input location"
+                android:hint="@string/input_location"
+                android:autofillHints="postalAddress"
+                android:inputType="textPostalAddress"
                 android:background="@drawable/bg_input"
                 android:padding="12dp"
-                android:layout_marginTop="16dp" />
+                android:layout_marginTop="16dp"
+                android:textColor="@android:color/black"
+                android:textColorHint="#666666"/>
 
             <Button
                 android:id="@+id/btnMaps"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="OPEN GOOGLE MAP"
+                android:text="@string/open_google_map"
                 android:layout_marginTop="10dp" />
 
+            <!-- WEBSITE -->
             <EditText
                 android:id="@+id/etWebsite"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Input Website URL"
+                android:hint="@string/input_website_url"
+                android:autofillHints="url"
+                android:inputType="textUri"
                 android:background="@drawable/bg_input"
                 android:padding="12dp"
-                android:layout_marginTop="16dp" />
+                android:layout_marginTop="16dp"
+                android:textColor="@android:color/black"
+                android:textColorHint="#666666"/>
 
             <Button
                 android:id="@+id/btnWebsite"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="OPEN WEBSITE"
+                android:text="@string/open_website"
                 android:layout_marginTop="10dp" />
 
+            <!-- OTHER BUTTONS -->
             <Button
                 android:id="@+id/btnCamera"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="OPEN CAMERA"
+                android:text="@string/open_camera"
                 android:layout_marginTop="16dp" />
 
             <Button
                 android:id="@+id/btnGallery"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="OPEN GALLERY"
+                android:text="@string/open_gallery"
                 android:layout_marginTop="12dp" />
 
             <Button
                 android:id="@+id/btnAlarm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="OPEN ALARM"
+                android:text="@string/open_alarm"
                 android:layout_marginTop="12dp" />
 
             <Button
                 android:id="@+id/btnContacts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="OPEN CONTACTS"
+                android:text="@string/open_contacts"
                 android:layout_marginTop="12dp" />
 
             <Button
                 android:id="@+id/btnNews"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="OPEN NEWS"
+                android:text="@string/open_news"
                 android:layout_marginTop="12dp" />
 
             <Button
                 android:id="@+id/btnInstagram"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="OPEN INSTAGRAM"
+                android:text="@string/open_instagram"
                 android:layout_marginTop="12dp" />
 
             <Button
                 android:id="@+id/btnFacebook"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="OPEN FACEBOOK"
+                android:text="@string/open_facebook"
                 android:layout_marginTop="12dp" />
 
             <Button
                 android:id="@+id/btnYoutube"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="OPEN YOUTUBE"
+                android:text="@string/open_youtube"
                 android:layout_marginTop="12dp" />
 
             <Button
                 android:id="@+id/btnWhatsapp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="OPEN WHATSAPP"
+                android:text="@string/open_whatsapp"
                 android:layout_marginTop="12dp" />
 
             <Button
@@ -171,6 +190,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/logout"
                 android:layout_marginTop="18dp" />
+
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

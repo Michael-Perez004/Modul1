@@ -5,8 +5,36 @@
     <!-- (Opsional) Permission jika nanti pakai CALL langsung -->
     <!-- Tidak wajib karena kita pakai ACTION_DIAL -->
     <!--
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     -->
+
+    <!-- Queries untuk implicit intent -->
+    <queries>
+
+        <!-- Browser / website / berita / sosial media -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="https" />
+        </intent>
+
+        <!-- Google Maps -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="geo" />
+        </intent>
+
+        <!-- Dial telepon -->
+        <intent>
+            <action android:name="android.intent.action.DIAL" />
+        </intent>
+
+        <!-- Share text -->
+        <intent>
+            <action android:name="android.intent.action.SEND" />
+            <data android:mimeType="text/plain" />
+        </intent>
+
+    </queries>
 
     <application
         android:allowBackup="true"

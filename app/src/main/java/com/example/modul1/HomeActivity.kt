@@ -2,7 +2,6 @@ package com.example.modul1
 
 import android.content.ActivityNotFoundException
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.provider.AlarmClock
 import android.provider.MediaStore
@@ -10,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.toUri
 
 class HomeActivity : AppCompatActivity() {
 
@@ -37,50 +37,54 @@ class HomeActivity : AppCompatActivity() {
         val btnWhatsapp = findViewById<Button>(R.id.btnWhatsapp)
         val btnLogout = findViewById<Button>(R.id.btnLogout)
 
+        // 🔹 SHARE TEXT
         btnShare.setOnClickListener {
             val text = etShareText.text.toString().trim()
 
             if (text.isEmpty()) {
                 Toast.makeText(this, "Masukkan teks terlebih dahulu", Toast.LENGTH_SHORT).show()
             } else {
-                val intent = Intent(Intent.ACTION_SEND)
-                intent.type = "text/plain"
-                intent.putExtra(Intent.EXTRA_SUBJECT, "BNI Mobile Banking")
-                intent.putExtra(Intent.EXTRA_TEXT, text)
+                val intent = Intent(Intent.ACTION_SEND).apply {
+                    type = "text/plain"
+                    putExtra(Intent.EXTRA_SUBJECT, "BNI Mobile Banking")
+                    putExtra(Intent.EXTRA_TEXT, text)
+                }
                 startActivity(Intent.createChooser(intent, "Share to"))
             }
         }
 
+        // 🔹 CALL
         btnCall.setOnClickListener {
             val phone = etPhone.text.toString().trim()
 
             if (phone.isEmpty()) {
                 Toast.makeText(this, "Masukkan nomor telepon", Toast.LENGTH_SHORT).show()
             } else {
-                val intent = Intent(Intent.ACTION_DIAL)
-                intent.data = Uri.parse("tel:$phone")
-                startActivity(intent)
+                startActivity(Intent(Intent.ACTION_DIAL, "tel:$phone".toUri()))
             }
         }
 
+        // 🔹 GOOGLE MAPS
         btnMaps.setOnClickListener {
             val location = etLocation.text.toString().trim()
 
             if (location.isEmpty()) {
                 Toast.makeText(this, "Masukkan lokasi", Toast.LENGTH_SHORT).show()
             } else {
-                val uri = Uri.parse("geo:0,0?q=${Uri.encode(location)}")
-                val intent = Intent(Intent.ACTION_VIEW, uri)
-                intent.setPackage("com.google.android.apps.maps")
+                val uri = "geo:0,0?q=${location}".toUri()
+                val intent = Intent(Intent.ACTION_VIEW, uri).apply {
+                    setPackage("com.google.android.apps.maps")
+                }
 
                 try {
                     startActivity(intent)
-                } catch (e: ActivityNotFoundException) {
+                } catch (_: ActivityNotFoundException) {
                     startActivity(Intent(Intent.ACTION_VIEW, uri))
                 }
             }
         }
 
+        // 🔹 WEBSITE
         btnWebsite.setOnClickListener {
             var website = etWebsite.text.toString().trim()
 
@@ -90,11 +94,11 @@ class HomeActivity : AppCompatActivity() {
                 if (!website.startsWith("http://") && !website.startsWith("https://")) {
                     website = "https://$website"
                 }
-
-                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(website)))
+                startActivity(Intent(Intent.ACTION_VIEW, website.toUri()))
             }
         }
 
+        // 🔹 CAMERA
         btnCamera.setOnClickListener {
             val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
             if (intent.resolveActivity(packageManager) != null) {
@@ -104,11 +108,13 @@ class HomeActivity : AppCompatActivity() {
             }
         }
 
+        // 🔹 GALLERY
         btnGallery.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
             startActivity(intent)
         }
 
+        // 🔹 ALARM
         btnAlarm.setOnClickListener {
             val intent = Intent(AlarmClock.ACTION_SET_ALARM).apply {
                 putExtra(AlarmClock.EXTRA_MESSAGE, "Alarm dari aplikasi BNI")
@@ -123,35 +129,38 @@ class HomeActivity : AppCompatActivity() {
             }
         }
 
+        // 🔹 CONTACTS
         btnContacts.setOnClickListener {
             try {
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("content://contacts/people/"))
-                startActivity(intent)
-            } catch (e: Exception) {
+                startActivity(Intent(Intent.ACTION_VIEW, "content://contacts/people/".toUri()))
+            } catch (_: Exception) {
                 Toast.makeText(this, "Aplikasi kontak tidak tersedia", Toast.LENGTH_SHORT).show()
             }
         }
 
+        // 🔹 NEWS
         btnNews.setOnClickListener {
-            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://news.google.com/")))
+            startActivity(Intent(Intent.ACTION_VIEW, "https://news.google.com/".toUri()))
         }
 
+        // 🔹 SOCIAL MEDIA
         btnInstagram.setOnClickListener {
-            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/")))
+            startActivity(Intent(Intent.ACTION_VIEW, "https://www.instagram.com/".toUri()))
         }
 
         btnFacebook.setOnClickListener {
-            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/")))
+            startActivity(Intent(Intent.ACTION_VIEW, "https://www.facebook.com/".toUri()))
         }
 
         btnYoutube.setOnClickListener {
-            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/")))
+            startActivity(Intent(Intent.ACTION_VIEW, "https://www.youtube.com/".toUri()))
         }
 
         btnWhatsapp.setOnClickListener {
-            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://wa.me/6281234567890")))
+            startActivity(Intent(Intent.ACTION_VIEW, "https://wa.me/6281234567890".toUri()))
         }
 
+        // 🔹 LOGOUT
         btnLogout.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
             finish()

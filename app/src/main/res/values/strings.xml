@@ -4,6 +4,8 @@
     <string name="app_name">BNI Mobile Banking</string>
     <string name="back">Back</string>
     <string name="kembali">Kembali</string>
+    <string name="logo_bni">Logo BNI</string>
+    <string name="bni">BNI</string>
 
     <!-- Login -->
     <string name="mobile_banking">Mobile Banking</string>
@@ -34,5 +36,29 @@
     <string name="home_title">BNI Mobile Banking</string>
     <string name="home_subtitle">Selamat Datang di Halaman Home</string>
     <string name="logout">LOGOUT</string>
+    <string name="menu_implicit_intent">Menu Implicit Intent</string>
+
+    <!-- Input -->
+    <string name="input_text">Input text</string>
+    <string name="input_phone_number">Input phone number</string>
+    <string name="input_location">Input location</string>
+    <string name="input_website_url">Input Website URL</string>
+
+    <!-- Button Actions -->
+    <string name="share_to">SHARE TO</string>
+    <string name="call">CALL</string>
+    <string name="open_google_map">OPEN GOOGLE MAP</string>
+    <string name="open_website">OPEN WEBSITE</string>
+    <string name="open_camera">OPEN CAMERA</string>
+    <string name="open_gallery">OPEN GALLERY</string>
+    <string name="open_alarm">OPEN ALARM</string>
+    <string name="open_contacts">OPEN CONTACTS</string>
+    <string name="open_news">OPEN NEWS</string>
+
+    <!-- Social Media -->
+    <string name="open_instagram">OPEN INSTAGRAM</string>
+    <string name="open_facebook">OPEN FACEBOOK</string>
+    <string name="open_youtube">OPEN YOUTUBE</string>
+    <string name="open_whatsapp">OPEN WHATSAPP</string>
 
 </resources>
