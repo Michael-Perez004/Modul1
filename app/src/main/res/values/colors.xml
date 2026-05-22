@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <resources>
-    <color name="bni_orange">#F57C00</color>
-    <color name="bni_orange_dark">#E65100</color>
-    <color name="bni_green">#0F9D58</color>
-    <color name="text_dark">#1F2937</color>
-    <color name="text_muted">#6B7280</color>
-    <color name="text_hint">#9CA3AF</color>
+
+    <color name="orange_bni">#F37021</color>
+    <color name="orange_dark">#D85E12</color>
+    <color name="white">#FFFFFF</color>
+    <color name="gray_bg">#F5F5F5</color>
+    <color name="text_dark">#222222</color>
+    <color name="text_light">#777777</color>
+    <color name="green_success">#00C853</color>
+
 </resources>

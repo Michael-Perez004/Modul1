@@ -3,167 +3,280 @@ package com.example.modul1
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.os.Bundle
-import android.provider.AlarmClock
 import android.provider.MediaStore
-import android.widget.Button
-import android.widget.EditText
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.net.toUri
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeActivity : AppCompatActivity() {
+
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var list: ArrayList<TransaksiModel>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        val etShareText = findViewById<EditText>(R.id.etShareText)
-        val etPhone = findViewById<EditText>(R.id.etPhone)
-        val etLocation = findViewById<EditText>(R.id.etLocation)
-        val etWebsite = findViewById<EditText>(R.id.etWebsite)
+        // =========================
+        // TOOLBAR
+        // =========================
 
-        val btnShare = findViewById<Button>(R.id.btnShare)
-        val btnCall = findViewById<Button>(R.id.btnCall)
-        val btnMaps = findViewById<Button>(R.id.btnMaps)
-        val btnWebsite = findViewById<Button>(R.id.btnWebsite)
-        val btnCamera = findViewById<Button>(R.id.btnCamera)
-        val btnGallery = findViewById<Button>(R.id.btnGallery)
-        val btnAlarm = findViewById<Button>(R.id.btnAlarm)
-        val btnContacts = findViewById<Button>(R.id.btnContacts)
-        val btnNews = findViewById<Button>(R.id.btnNews)
-        val btnInstagram = findViewById<Button>(R.id.btnInstagram)
-        val btnFacebook = findViewById<Button>(R.id.btnFacebook)
-        val btnYoutube = findViewById<Button>(R.id.btnYoutube)
-        val btnWhatsapp = findViewById<Button>(R.id.btnWhatsapp)
-        val btnLogout = findViewById<Button>(R.id.btnLogout)
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
 
-        // 🔹 SHARE TEXT
-        btnShare.setOnClickListener {
-            val text = etShareText.text.toString().trim()
+        // =========================
+        // RECYCLERVIEW
+        // =========================
 
-            if (text.isEmpty()) {
-                Toast.makeText(this, "Masukkan teks terlebih dahulu", Toast.LENGTH_SHORT).show()
-            } else {
-                val intent = Intent(Intent.ACTION_SEND).apply {
-                    type = "text/plain"
-                    putExtra(Intent.EXTRA_SUBJECT, "BNI Mobile Banking")
-                    putExtra(Intent.EXTRA_TEXT, text)
-                }
-                startActivity(Intent.createChooser(intent, "Share to"))
-            }
-        }
+        recyclerView = findViewById(R.id.recyclerView)
 
-        // 🔹 CALL
-        btnCall.setOnClickListener {
-            val phone = etPhone.text.toString().trim()
+        list = arrayListOf(
 
-            if (phone.isEmpty()) {
-                Toast.makeText(this, "Masukkan nomor telepon", Toast.LENGTH_SHORT).show()
-            } else {
-                startActivity(Intent(Intent.ACTION_DIAL, "tel:$phone".toUri()))
-            }
-        }
+            TransaksiModel(
+                "Transfer BCA",
+                "22 Mei 2026",
+                "Rp 500.000"
+            ),
 
-        // 🔹 GOOGLE MAPS
-        btnMaps.setOnClickListener {
-            val location = etLocation.text.toString().trim()
+            TransaksiModel(
+                "Pembayaran PLN",
+                "21 Mei 2026",
+                "Rp 250.000"
+            ),
 
-            if (location.isEmpty()) {
-                Toast.makeText(this, "Masukkan lokasi", Toast.LENGTH_SHORT).show()
-            } else {
-                val uri = "geo:0,0?q=${location}".toUri()
-                val intent = Intent(Intent.ACTION_VIEW, uri).apply {
-                    setPackage("com.google.android.apps.maps")
-                }
+            TransaksiModel(
+                "QRIS Indomaret",
+                "20 Mei 2026",
+                "Rp 75.000"
+            ),
+
+            TransaksiModel(
+                "Top Up Dana",
+                "19 Mei 2026",
+                "Rp 100.000"
+            ),
+
+            TransaksiModel(
+                "Transfer Mandiri",
+                "18 Mei 2026",
+                "Rp 1.200.000"
+            )
+
+        )
+
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = TransaksiAdapter(list)
+
+        // =========================
+        // QUICK MENU
+        // =========================
+
+        // MAPS
+
+        findViewById<LinearLayout>(R.id.cardMaps)
+            .setOnClickListener {
+
+                val uri = "geo:0,0?q=Bank BNI Jayapura".toUri()
+
+                val intent = Intent(Intent.ACTION_VIEW, uri)
+
+                intent.setPackage("com.google.android.apps.maps")
 
                 try {
+
                     startActivity(intent)
+
                 } catch (_: ActivityNotFoundException) {
-                    startActivity(Intent(Intent.ACTION_VIEW, uri))
+
+                    startActivity(
+                        Intent(
+                            Intent.ACTION_VIEW,
+                            uri
+                        )
+                    )
+
                 }
+
             }
-        }
 
-        // 🔹 WEBSITE
-        btnWebsite.setOnClickListener {
-            var website = etWebsite.text.toString().trim()
+        // CAMERA
 
-            if (website.isEmpty()) {
-                Toast.makeText(this, "Masukkan alamat website", Toast.LENGTH_SHORT).show()
-            } else {
-                if (!website.startsWith("http://") && !website.startsWith("https://")) {
-                    website = "https://$website"
+        findViewById<LinearLayout>(R.id.cardCamera)
+            .setOnClickListener {
+
+                val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+
+                if (intent.resolveActivity(packageManager) != null) {
+
+                    startActivity(intent)
+
+                } else {
+
+                    Toast.makeText(
+                        this,
+                        "Camera tidak tersedia",
+                        Toast.LENGTH_SHORT
+                    ).show()
+
                 }
-                startActivity(Intent(Intent.ACTION_VIEW, website.toUri()))
-            }
-        }
 
-        // 🔹 CAMERA
-        btnCamera.setOnClickListener {
-            val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-            if (intent.resolveActivity(packageManager) != null) {
-                startActivity(intent)
-            } else {
-                Toast.makeText(this, "Camera tidak tersedia", Toast.LENGTH_SHORT).show()
-            }
-        }
-
-        // 🔹 GALLERY
-        btnGallery.setOnClickListener {
-            val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-            startActivity(intent)
-        }
-
-        // 🔹 ALARM
-        btnAlarm.setOnClickListener {
-            val intent = Intent(AlarmClock.ACTION_SET_ALARM).apply {
-                putExtra(AlarmClock.EXTRA_MESSAGE, "Alarm dari aplikasi BNI")
-                putExtra(AlarmClock.EXTRA_HOUR, 7)
-                putExtra(AlarmClock.EXTRA_MINUTES, 0)
             }
 
-            if (intent.resolveActivity(packageManager) != null) {
-                startActivity(intent)
-            } else {
-                Toast.makeText(this, "Aplikasi alarm tidak tersedia", Toast.LENGTH_SHORT).show()
+        // WEBSITE
+
+        findViewById<LinearLayout>(R.id.cardWebsite)
+            .setOnClickListener {
+
+                startActivity(
+
+                    Intent(
+                        Intent.ACTION_VIEW,
+                        "https://www.bni.co.id".toUri()
+                    )
+
+                )
+
             }
-        }
 
-        // 🔹 CONTACTS
-        btnContacts.setOnClickListener {
-            try {
-                startActivity(Intent(Intent.ACTION_VIEW, "content://contacts/people/".toUri()))
-            } catch (_: Exception) {
-                Toast.makeText(this, "Aplikasi kontak tidak tersedia", Toast.LENGTH_SHORT).show()
+        // WHATSAPP
+
+        findViewById<LinearLayout>(R.id.cardWhatsapp)
+            .setOnClickListener {
+
+                startActivity(
+
+                    Intent(
+                        Intent.ACTION_VIEW,
+                        "https://wa.me/628123456789".toUri()
+                    )
+
+                )
+
             }
+
+        // =========================
+        // BOTTOM NAVIGATION
+        // =========================
+
+        val bottomNav =
+            findViewById<BottomNavigationView>(R.id.bottomNavigation)
+
+        bottomNav.setOnItemSelectedListener {
+
+            when (it.itemId) {
+
+                R.id.nav_home -> {
+
+                    Toast.makeText(
+                        this,
+                        "Home",
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    true
+
+                }
+
+                R.id.nav_transaksi -> {
+
+                    recyclerView.smoothScrollToPosition(0)
+
+                    Toast.makeText(
+                        this,
+                        "Riwayat Transaksi",
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    true
+
+                }
+
+                R.id.nav_profile -> {
+
+                    Toast.makeText(
+                        this,
+                        "Profile User",
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    true
+
+                }
+
+                else -> false
+
+            }
+
         }
 
-        // 🔹 NEWS
-        btnNews.setOnClickListener {
-            startActivity(Intent(Intent.ACTION_VIEW, "https://news.google.com/".toUri()))
-        }
-
-        // 🔹 SOCIAL MEDIA
-        btnInstagram.setOnClickListener {
-            startActivity(Intent(Intent.ACTION_VIEW, "https://www.instagram.com/".toUri()))
-        }
-
-        btnFacebook.setOnClickListener {
-            startActivity(Intent(Intent.ACTION_VIEW, "https://www.facebook.com/".toUri()))
-        }
-
-        btnYoutube.setOnClickListener {
-            startActivity(Intent(Intent.ACTION_VIEW, "https://www.youtube.com/".toUri()))
-        }
-
-        btnWhatsapp.setOnClickListener {
-            startActivity(Intent(Intent.ACTION_VIEW, "https://wa.me/6281234567890".toUri()))
-        }
-
-        // 🔹 LOGOUT
-        btnLogout.setOnClickListener {
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
-        }
     }
+
+    // =========================
+    // OPTION MENU
+    // =========================
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+
+        menuInflater.inflate(R.menu.menu_toolbar, menu)
+
+        return true
+
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        return when (item.itemId) {
+
+            R.id.menu_profile -> {
+
+                Toast.makeText(
+                    this,
+                    "Menu Profile",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+                true
+
+            }
+
+            R.id.menu_setting -> {
+
+                Toast.makeText(
+                    this,
+                    "Menu Setting",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+                true
+
+            }
+
+            R.id.menu_logout -> {
+
+                startActivity(
+                    Intent(
+                        this,
+                        LoginActivity::class.java
+                    )
+                )
+
+                finish()
+
+                true
+
+            }
+
+            else -> super.onOptionsItemSelected(item)
+
+        }
+
+    }
+
 }

@@ -9,34 +9,82 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class LoginActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        val etUserId = findViewById<EditText>(R.id.etUserId)
+        val etUser = findViewById<EditText>(R.id.etUser)
         val etPassword = findViewById<EditText>(R.id.etPassword)
+
         val btnLogin = findViewById<Button>(R.id.btnLogin)
+
         val tvRegister = findViewById<TextView>(R.id.tvRegister)
-        val tvLupaPassword = findViewById<TextView>(R.id.tvLupaPassword)
+
+        val tvForgotPassword =
+            findViewById<TextView>(R.id.tvForgotPassword)
+
+        // LOGIN
 
         btnLogin.setOnClickListener {
-            val userId = etUserId.text.toString().trim()
+
+            val username = etUser.text.toString().trim()
+
             val password = etPassword.text.toString().trim()
 
-            if (userId.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "User ID dan Password wajib diisi", Toast.LENGTH_SHORT).show()
+            if (username.isEmpty() || password.isEmpty()) {
+
+                Toast.makeText(
+                    this,
+                    "Username dan Password harus diisi",
+                    Toast.LENGTH_SHORT
+                ).show()
+
             } else {
-                Toast.makeText(this, "Login berhasil", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this, HomeActivity::class.java))
+
+                Toast.makeText(
+                    this,
+                    "Login berhasil",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+                startActivity(
+                    Intent(
+                        this,
+                        HomeActivity::class.java
+                    )
+                )
+
             }
+
         }
+
+        // REGISTER
 
         tvRegister.setOnClickListener {
-            startActivity(Intent(this, RegisterActivity::class.java))
+
+            startActivity(
+                Intent(
+                    this,
+                    RegisterActivity::class.java
+                )
+            )
+
         }
 
-        tvLupaPassword.setOnClickListener {
-            startActivity(Intent(this, ForgotPasswordActivity::class.java))
+        // FORGOT PASSWORD
+
+        tvForgotPassword.setOnClickListener {
+
+            startActivity(
+                Intent(
+                    this,
+                    ForgotPasswordActivity::class.java
+                )
+            )
+
         }
+
     }
+
 }

@@ -1,9 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <style name="Theme.Modul1" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/bni_orange</item>
-        <item name="colorPrimaryVariant">@color/bni_orange_dark</item>
-        <item name="colorSecondary">@color/bni_green</item>
-        <item name="android:statusBarColor">@android:color/background_dark</item>
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme -->
+
+    <style
+        name="Theme.Modul1"
+        parent="Theme.Material3.Light.NoActionBar">
+
+        <!-- Primary color -->
+
+        <item name="colorPrimary">@color/orange_bni</item>
+
+        <item name="colorPrimaryVariant">@color/orange_dark</item>
+
+        <item name="colorOnPrimary">@color/white</item>
+
+        <!-- Status bar -->
+
+        <item name="android:statusBarColor">
+            @color/orange_dark
+        </item>
+
+        <!-- Navigation bar -->
+
+        <item name="android:navigationBarColor">
+            @color/white
+        </item>
+
+        <!-- Background -->
+
+        <item name="android:windowBackground">
+            @color/gray_bg
+        </item>
+
+        <!-- Toolbar -->
+
+        <item name="toolbarStyle">
+            @style/Widget.App.Toolbar
+        </item>
+
     </style>
+
+    <!-- Toolbar Style -->
+
+    <style
+        name="Widget.App.Toolbar"
+        parent="Widget.Material3.Toolbar">
+
+        <item name="android:background">
+            @color/orange_bni
+        </item>
+
+        <item name="titleTextColor">
+            @color/white
+        </item>
+
+    </style>
+
 </resources>
