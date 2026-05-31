@@ -75,7 +75,6 @@
                     android:id="@+id/etNama"
                     android:hint="Nama Lengkap"
                     android:padding="14dp"
-                    android:background="@android:drawable/edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
@@ -87,7 +86,6 @@
                     android:inputType="textEmailAddress"
                     android:padding="14dp"
                     android:layout_marginTop="14dp"
-                    android:background="@android:drawable/edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
@@ -98,7 +96,6 @@
                     android:hint="Username"
                     android:padding="14dp"
                     android:layout_marginTop="14dp"
-                    android:background="@android:drawable/edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
@@ -110,7 +107,6 @@
                     android:inputType="textPassword"
                     android:padding="14dp"
                     android:layout_marginTop="14dp"
-                    android:background="@android:drawable/edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 

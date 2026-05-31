@@ -19,6 +19,14 @@
         android:title="Setting"
         app:showAsAction="never"/>
 
+    <!-- LAYANAN -->
+
+    <item
+        android:id="@+id/menu_layanan"
+        android:icon="@android:drawable/ic_menu_sort_by_size"
+        android:title="Layanan"
+        app:showAsAction="never"/>
+
     <!-- LOGOUT -->
 
     <item

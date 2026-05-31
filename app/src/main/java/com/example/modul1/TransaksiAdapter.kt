@@ -1,38 +1,53 @@
 package com.example.modul1
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class TransaksiAdapter(private val list : ArrayList<TransaksiModel>)
-    : RecyclerView.Adapter<TransaksiAdapter.ViewHolder>() {
+class TransaksiAdapter(
+    private val list: ArrayList<TransaksiModel>
+) : RecyclerView.Adapter<TransaksiAdapter.ViewHolder>() {
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+    class ViewHolder(itemView: View) :
+        RecyclerView.ViewHolder(itemView) {
 
-        val nama = itemView.findViewById<TextView>(R.id.txtNama)
-        val tanggal = itemView.findViewById<TextView>(R.id.txtTanggal)
-        val nominal = itemView.findViewById<TextView>(R.id.txtNominal)
+        val nama: TextView =
+            itemView.findViewById(R.id.txtNama)
 
+        val tanggal: TextView =
+            itemView.findViewById(R.id.txtTanggal)
+
+        val nominal: TextView =
+            itemView.findViewById(R.id.txtNominal)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): ViewHolder {
 
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_transaksi,parent,false)
+            .inflate(
+                R.layout.item_transaksi,
+                parent,
+                false
+            )
 
         return ViewHolder(view)
-
     }
 
     override fun getItemCount(): Int {
 
         return list.size
-
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(
+        holder: ViewHolder,
+        position: Int
+    ) {
 
         val data = list[position]
 
@@ -40,6 +55,30 @@ class TransaksiAdapter(private val list : ArrayList<TransaksiModel>)
         holder.tanggal.text = data.tanggal
         holder.nominal.text = data.nominal
 
-    }
+        holder.itemView.setOnClickListener {
 
+            val intent = Intent(
+                holder.itemView.context,
+                DetailActivity::class.java
+            )
+
+            intent.putExtra(
+                "nama",
+                data.nama
+            )
+
+            intent.putExtra(
+                "tanggal",
+                data.tanggal
+            )
+
+            intent.putExtra(
+                "nominal",
+                data.nominal
+            )
+
+            holder.itemView.context
+                .startActivity(intent)
+        }
+    }
 }

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#F5F5F5"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- HEADER BNI -->
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="#F37021"
+        android:padding="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="BNI Mobile Banking"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:text="Riwayat Transaksi"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <!-- TOTAL -->
+
+    <TextView
+        android:id="@+id/tvTotalMutasi"
+        android:text="5 Transaksi"
+        android:textSize="14sp"
+        android:textColor="#777777"
+        android:padding="16dp"
+        android:paddingBottom="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <!-- RECYCLERVIEW -->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerMutasi"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="6dp"/>
+
+</LinearLayout>

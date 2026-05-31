@@ -1,172 +1,109 @@
 package com.example.modul1
 
-import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.os.Bundle
-import android.provider.MediaStore
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.net.toUri
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.cardview.widget.CardView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeActivity : AppCompatActivity() {
-
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var list: ArrayList<TransaksiModel>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        // =========================
-        // TOOLBAR
-        // =========================
-
+        // Toolbar
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-        // =========================
-        // RECYCLERVIEW
-        // =========================
+        // ==========================
+        // MENU BNI
+        // ==========================
 
-        recyclerView = findViewById(R.id.recyclerView)
-
-        list = arrayListOf(
-
-            TransaksiModel(
-                "Transfer BCA",
-                "22 Mei 2026",
-                "Rp 500.000"
-            ),
-
-            TransaksiModel(
-                "Pembayaran PLN",
-                "21 Mei 2026",
-                "Rp 250.000"
-            ),
-
-            TransaksiModel(
-                "QRIS Indomaret",
-                "20 Mei 2026",
-                "Rp 75.000"
-            ),
-
-            TransaksiModel(
-                "Top Up Dana",
-                "19 Mei 2026",
-                "Rp 100.000"
-            ),
-
-            TransaksiModel(
-                "Transfer Mandiri",
-                "18 Mei 2026",
-                "Rp 1.200.000"
-            )
-
-        )
-
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = TransaksiAdapter(list)
-
-        // =========================
-        // QUICK MENU
-        // =========================
-
-        // MAPS
-
-        findViewById<LinearLayout>(R.id.cardMaps)
+        findViewById<CardView>(R.id.cardTransfer)
             .setOnClickListener {
 
-                val uri = "geo:0,0?q=Bank BNI Jayapura".toUri()
-
-                val intent = Intent(Intent.ACTION_VIEW, uri)
-
-                intent.setPackage("com.google.android.apps.maps")
-
-                try {
-
-                    startActivity(intent)
-
-                } catch (_: ActivityNotFoundException) {
-
-                    startActivity(
-                        Intent(
-                            Intent.ACTION_VIEW,
-                            uri
-                        )
-                    )
-
-                }
-
-            }
-
-        // CAMERA
-
-        findViewById<LinearLayout>(R.id.cardCamera)
-            .setOnClickListener {
-
-                val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-
-                if (intent.resolveActivity(packageManager) != null) {
-
-                    startActivity(intent)
-
-                } else {
-
-                    Toast.makeText(
+                startActivity(
+                    Intent(
                         this,
-                        "Camera tidak tersedia",
-                        Toast.LENGTH_SHORT
-                    ).show()
-
-                }
-
-            }
-
-        // WEBSITE
-
-        findViewById<LinearLayout>(R.id.cardWebsite)
-            .setOnClickListener {
-
-                startActivity(
-
-                    Intent(
-                        Intent.ACTION_VIEW,
-                        "https://www.bni.co.id".toUri()
+                        TransferActivity::class.java
                     )
-
                 )
 
             }
 
-        // WHATSAPP
-
-        findViewById<LinearLayout>(R.id.cardWhatsapp)
+        findViewById<CardView>(R.id.cardQris)
             .setOnClickListener {
 
                 startActivity(
-
                     Intent(
-                        Intent.ACTION_VIEW,
-                        "https://wa.me/628123456789".toUri()
+                        this,
+                        QrisActivity::class.java
                     )
-
                 )
 
             }
 
-        // =========================
+        findViewById<CardView>(R.id.cardEwallet)
+            .setOnClickListener {
+
+                startActivity(
+                    Intent(
+                        this,
+                        EwalletActivity::class.java
+                    )
+                )
+
+            }
+
+        findViewById<CardView>(R.id.cardPembayaran)
+            .setOnClickListener {
+
+                startActivity(
+                    Intent(
+                        this,
+                        PembayaranActivity::class.java
+                    )
+                )
+
+            }
+
+        findViewById<CardView>(R.id.cardPembelian)
+            .setOnClickListener {
+
+                startActivity(
+                    Intent(
+                        this,
+                        PembelianActivity::class.java
+                    )
+                )
+
+            }
+
+        findViewById<CardView>(R.id.cardMutasi)
+            .setOnClickListener {
+
+                startActivity(
+                    Intent(
+                        this,
+                        MutasiActivity::class.java
+                    )
+                )
+
+            }
+
+        // ==========================
         // BOTTOM NAVIGATION
-        // =========================
+        // ==========================
 
         val bottomNav =
-            findViewById<BottomNavigationView>(R.id.bottomNavigation)
+            findViewById<BottomNavigationView>(
+                R.id.bottomNavigation
+            )
 
         bottomNav.setOnItemSelectedListener {
 
@@ -181,81 +118,104 @@ class HomeActivity : AppCompatActivity() {
                     ).show()
 
                     true
-
                 }
 
                 R.id.nav_transaksi -> {
 
-                    recyclerView.smoothScrollToPosition(0)
-
-                    Toast.makeText(
-                        this,
-                        "Riwayat Transaksi",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    startActivity(
+                        Intent(
+                            this,
+                            MutasiActivity::class.java
+                        )
+                    )
 
                     true
-
                 }
 
                 R.id.nav_profile -> {
 
-                    Toast.makeText(
-                        this,
-                        "Profile User",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    startActivity(
+                        Intent(
+                            this,
+                            ProfileActivity::class.java
+                        )
+                    )
 
                     true
-
                 }
 
                 else -> false
-
             }
 
         }
 
     }
 
-    // =========================
+    // ==========================
     // OPTION MENU
-    // =========================
+    // ==========================
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
 
-        menuInflater.inflate(R.menu.menu_toolbar, menu)
+        menuInflater.inflate(
+            R.menu.menu_toolbar,
+            menu
+        )
 
         return true
-
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    override fun onOptionsItemSelected(
+        item: MenuItem
+    ): Boolean {
 
         return when (item.itemId) {
 
             R.id.menu_profile -> {
 
-                Toast.makeText(
-                    this,
-                    "Menu Profile",
-                    Toast.LENGTH_SHORT
-                ).show()
+                startActivity(
+                    Intent(
+                        this,
+                        ProfileActivity::class.java
+                    )
+                )
 
                 true
-
             }
 
             R.id.menu_setting -> {
 
-                Toast.makeText(
-                    this,
-                    "Menu Setting",
-                    Toast.LENGTH_SHORT
-                ).show()
+                val options = arrayOf(
+                    "Ubah Bahasa",
+                    "Notifikasi",
+                    "Keamanan",
+                    "Tentang Aplikasi"
+                )
+
+                android.app.AlertDialog.Builder(this)
+                    .setTitle("Pengaturan")
+                    .setItems(options) { _, which ->
+                        Toast.makeText(
+                            this,
+                            options[which],
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                    .show()
 
                 true
+            }
 
+            R.id.menu_layanan -> {
+
+                startActivity(
+                    Intent(
+                        this,
+                        LayananActivity::class.java
+                    )
+                )
+
+                true
             }
 
             R.id.menu_logout -> {
@@ -270,11 +230,10 @@ class HomeActivity : AppCompatActivity() {
                 finish()
 
                 true
-
             }
 
-            else -> super.onOptionsItemSelected(item)
-
+            else ->
+                super.onOptionsItemSelected(item)
         }
 
     }

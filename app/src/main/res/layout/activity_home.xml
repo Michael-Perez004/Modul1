@@ -3,76 +3,89 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:background="@color/gray_bg"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F5F5F5">
+
 
     <!-- TOOLBAR -->
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:background="@color/orange_bni"
-        android:elevation="4dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:background="#F37021"
+        app:title="BNI Mobile Banking"
+        app:titleTextColor="#FFFFFF" />
+
+    <!-- SCROLL CONTENT -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
     <!-- HEADER -->
 
     <LinearLayout
-        android:orientation="vertical"
-        android:background="@color/orange_bni"
-        android:padding="24dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="#F37021"
+        android:orientation="vertical"
+        android:padding="20dp">
 
         <TextView
-            android:text="BNI Mobile Banking"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="26sp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <TextView
+            android:layout_height="wrap_content"
             android:text="Selamat Datang"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            android:layout_marginTop="5dp"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+
+        <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="Pengguna BNI"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_marginTop="4dp" />
 
         <!-- CARD SALDO -->
 
         <androidx.cardview.widget.CardView
-            android:layout_marginTop="20dp"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="6dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="6dp">
 
             <LinearLayout
-                android:padding="20dp"
-                android:orientation="vertical"
-                android:background="@color/white"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="Saldo Rekening"
-                    android:textColor="@color/text_light"
                     android:textSize="14sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:textColor="#757575" />
 
                 <TextView
-                    android:text="Rp 12.500.000"
-                    android:textColor="@color/text_dark"
-                    android:textStyle="bold"
-                    android:textSize="32sp"
-                    android:layout_marginTop="5dp"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:text="Rp 12.500.000"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:textColor="#F37021"
+                    android:layout_marginTop="5dp" />
 
             </LinearLayout>
 
@@ -80,140 +93,211 @@
 
     </LinearLayout>
 
-    <!-- QUICK MENU -->
+    <!-- MENU UTAMA -->
 
     <GridLayout
-        android:columnCount="4"
-        android:padding="12dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:columnCount="3"
+        android:padding="8dp">
 
-        <!-- MAPS -->
+        <!-- TRANSFER -->
 
-        <LinearLayout
-            android:id="@+id/cardMaps"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="10dp"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardTransfer"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1">
+            android:layout_height="110dp"
+            android:layout_margin="6dp"
+            android:layout_columnWeight="1"
+            app:cardCornerRadius="12dp">
 
-            <ImageView
-                android:src="@android:drawable/ic_dialog_map"
-                android:layout_width="40dp"
-                android:layout_height="40dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
 
-            <TextView
-                android:text="Maps"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:layout_marginTop="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@android:drawable/ic_menu_send" />
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Transfer"
+                    android:textStyle="bold"
+                    android:layout_marginTop="5dp" />
 
-        <!-- CAMERA -->
+            </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/cardCamera"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="10dp"
+        </androidx.cardview.widget.CardView>
+
+        <!-- QRIS -->
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardQris"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1">
+            android:layout_height="110dp"
+            android:layout_margin="6dp"
+            android:layout_columnWeight="1"
+            app:cardCornerRadius="12dp">
 
-            <ImageView
-                android:src="@android:drawable/ic_menu_camera"
-                android:layout_width="40dp"
-                android:layout_height="40dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
 
-            <TextView
-                android:text="Camera"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:layout_marginTop="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@android:drawable/ic_menu_camera" />
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="QRIS"
+                    android:textStyle="bold"
+                    android:layout_marginTop="5dp" />
 
-        <!-- WEBSITE -->
+            </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/cardWebsite"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="10dp"
+        </androidx.cardview.widget.CardView>
+
+        <!-- E-WALLET -->
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardEwallet"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1">
+            android:layout_height="110dp"
+            android:layout_margin="6dp"
+            android:layout_columnWeight="1"
+            app:cardCornerRadius="12dp">
 
-            <ImageView
-                android:src="@android:drawable/ic_menu_view"
-                android:layout_width="40dp"
-                android:layout_height="40dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
 
-            <TextView
-                android:text="Website"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:layout_marginTop="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@android:drawable/ic_menu_share" />
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="E-Wallet"
+                    android:textStyle="bold"
+                    android:layout_marginTop="5dp" />
 
-        <!-- WHATSAPP -->
+            </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/cardWhatsapp"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="10dp"
+        </androidx.cardview.widget.CardView>
+
+        <!-- PEMBAYARAN -->
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardPembayaran"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1">
+            android:layout_height="110dp"
+            android:layout_margin="6dp"
+            android:layout_columnWeight="1"
+            app:cardCornerRadius="12dp">
 
-            <ImageView
-                android:src="@android:drawable/ic_menu_send"
-                android:layout_width="40dp"
-                android:layout_height="40dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
 
-            <TextView
-                android:text="WhatsApp"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:layout_marginTop="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@android:drawable/ic_menu_agenda" />
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pembayaran"
+                    android:textStyle="bold"
+                    android:layout_marginTop="5dp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- PEMBELIAN -->
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardPembelian"
+            android:layout_width="0dp"
+            android:layout_height="110dp"
+            android:layout_margin="6dp"
+            android:layout_columnWeight="1"
+            app:cardCornerRadius="12dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@android:drawable/ic_menu_add" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pembelian"
+                    android:textStyle="bold"
+                    android:layout_marginTop="5dp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- MUTASI -->
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardMutasi"
+            android:layout_width="0dp"
+            android:layout_height="110dp"
+            android:layout_margin="6dp"
+            android:layout_columnWeight="1"
+            app:cardCornerRadius="12dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@android:drawable/ic_menu_recent_history" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mutasi"
+                    android:textStyle="bold"
+                    android:layout_marginTop="5dp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
 
     </GridLayout>
 
-    <!-- TITLE -->
+        </LinearLayout>
 
-    <TextView
-        android:text="Riwayat Transaksi"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:textColor="@color/text_dark"
-        android:paddingStart="16dp"
-        android:paddingTop="8dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <!-- RECYCLERVIEW -->
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:padding="6dp"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
+    </ScrollView>
 
     <!-- BOTTOM NAVIGATION -->
 
@@ -221,9 +305,8 @@
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        app:itemIconTint="@color/orange_bni"
-        app:itemTextColor="@color/orange_bni"
+        app:itemIconTint="#F37021"
+        app:itemTextColor="#F37021"
         app:menu="@menu/bottom_menu"/>
 
 </LinearLayout>

@@ -2,16 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- (Opsional) Permission jika nanti pakai CALL langsung -->
-    <!-- Tidak wajib karena kita pakai ACTION_DIAL -->
-    <!--
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-    -->
-
-    <!-- Queries untuk implicit intent -->
+    <!-- Queries untuk Implicit Intent Android 11+ -->
     <queries>
 
-        <!-- Browser / website / berita / sosial media -->
+        <!-- Browser -->
         <intent>
             <action android:name="android.intent.action.VIEW" />
             <data android:scheme="https" />
@@ -23,15 +17,26 @@
             <data android:scheme="geo" />
         </intent>
 
-        <!-- Dial telepon -->
+        <!-- Dial Phone -->
         <intent>
             <action android:name="android.intent.action.DIAL" />
         </intent>
 
-        <!-- Share text -->
+        <!-- Share Text -->
         <intent>
             <action android:name="android.intent.action.SEND" />
             <data android:mimeType="text/plain" />
+        </intent>
+
+        <!-- Camera -->
+        <intent>
+            <action android:name="android.media.action.IMAGE_CAPTURE" />
+        </intent>
+
+        <!-- Gallery -->
+        <intent>
+            <action android:name="android.intent.action.GET_CONTENT" />
+            <data android:mimeType="image/*" />
         </intent>
 
     </queries>
@@ -43,11 +48,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Modul1"
-        tools:targetApi="31">
+        tools:targetApi="34">
 
-        <!-- HOME -->
+        <!-- LOGIN -->
         <activity
-            android:name=".HomeActivity"
+            android:name=".LoginActivity"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+
+        <!-- REGISTER -->
+        <activity
+            android:name=".RegisterActivity"
             android:exported="false" />
 
         <!-- FORGOT PASSWORD -->
@@ -55,22 +73,51 @@
             android:name=".ForgotPasswordActivity"
             android:exported="false" />
 
-        <!-- REGISTER -->
+        <!-- HOME -->
         <activity
-            android:name=".RegisterActivity"
+            android:name=".HomeActivity"
             android:exported="false" />
 
-        <!-- LOGIN (LAUNCHER) -->
+        <!-- DETAIL TRANSAKSI -->
         <activity
-            android:name=".LoginActivity"
-            android:exported="true">
+            android:name=".DetailActivity"
+            android:exported="false" />
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <!-- FITUR BNI -->
 
-        </activity>
+        <activity
+            android:name=".TransferActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".QrisActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".EwalletActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".PembayaranActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".PembelianActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".MutasiActivity"
+            android:exported="false" />
+
+        <!-- PROFILE -->
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+
+        <!-- LAYANAN -->
+        <activity
+            android:name=".LayananActivity"
+            android:exported="false" />
 
     </application>
 
