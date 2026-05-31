@@ -1,104 +1,40 @@
 # 📱 Demo UI Mobile Banking BNI
 
-Aplikasi Android sederhana yang menampilkan UI Login, Registrasi, Forgot Password, dan Home Dashboard dengan desain modern bergaya Mobile Banking BNI.
+Aplikasi Android demo UI Mobile Banking BNI — tugas kampus menggunakan Kotlin dan XML di Android Studio.
 
-Project ini dibuat sebagai tugas kampus menggunakan Kotlin dan XML pada Android Studio.
+## 🎯 Enam Tugas
 
----
+| Tugas | Fitur | Activity |
+|---|---|---|
+| **1.** Login & Register | Halaman login dan registrasi | `LoginActivity`, `RegisterActivity` |
+| **2.** Explicit Intent | Navigasi antar halaman + Forgot Password | `ForgotPasswordActivity`, `HomeActivity` |
+| **3.** Implicit Intent | Lokasi ATM (Maps), Kamera, Bagikan, Website BNI, Hubungi BNI, YouTube, Instagram, Berita | `LayananActivity` |
+| **4.** Menu Android | Toolbar menu (Profile, Setting, Layanan, Logout) + Bottom Navigation (Home, Transaksi, Profile) | `menu_toolbar.xml`, `bottom_menu.xml` |
+| **5.** RecyclerView | Riwayat transaksi dengan RecyclerView + adapter | `MutasiActivity`, `TransaksiAdapter` |
+| **6.** Detail Item | Detail transaksi dari klik item RecyclerView | `DetailActivity` |
 
-## ✨ Fitur Utama
+## 📱 Fitur Aplikasi
 
-* 🔐 Halaman Login
-* 📝 Halaman Registrasi
-* 🔁 Halaman Forgot Password
-* 🏠 Dashboard Home Mobile Banking
-* 📋 RecyclerView Riwayat Transaksi
-* 📌 Bottom Navigation
-* ☰ Toolbar Option Menu
-* 🔗 Explicit Intent Navigation
-* 🌐 Implicit Intent
+- **Login** — form username/password dengan validasi
+- **Register** — registrasi akun baru
+- **Forgot Password** — reset password via email/username
+- **Home** — dashboard saldo + 6 menu layanan (Transfer, QRIS, E-Wallet, Pembayaran, Pembelian, Mutasi)
+- **Transaksi** — riwayat transaksi dengan RecyclerView
+- **Profile** — info pengguna (Michael Kemal)
+- **Layanan (Implicit Intent)** — 8 fitur: Lokasi ATM, Ambil Foto, Bagikan, Website BNI, Hubungi BNI 1500046, YouTube, Instagram, Berita
+- **Setting** — dialog pengaturan aplikasi
 
-  * Google Maps
-  * Camera
-  * Website
-  * WhatsApp
-* 🎨 UI Modern bergaya Mobile Banking BNI
-* 📱 Material Design 3
+## 🛠️ Build & Run
 
----
-
-## 🛠️ Teknologi yang Digunakan
-
-* Kotlin
-* XML Layout Android
-* RecyclerView
-* CardView
-* Material Design 3
-* Android Studio
-
----
-
-## 📂 Struktur Fitur
-
-```text
-LoginActivity
-RegisterActivity
-ForgotPasswordActivity
-HomeActivity
-RecyclerView Transaction List
-Bottom Navigation
-Toolbar Menu
+```bash
+./gradlew assembleDebug
+./gradlew installDebug
+./gradlew test
+./gradlew lint
 ```
 
----
-
-## 📸 Tampilan Aplikasi
-
-### Login Screen
-
-* UI modern dengan tema warna BNI
-* Form username dan password
-
-### Register Screen
-
-* Registrasi akun baru
-* CardView modern
-
-### Home Dashboard
-
-* Informasi saldo rekening
-* Quick menu banking
-* Riwayat transaksi menggunakan RecyclerView
-* Bottom Navigation modern
-
----
-
-## 🎯 Tujuan Project
-
-Project ini dibuat untuk memenuhi tugas mata kuliah Android Mobile Programming:
-
-* Tugas 1 → Login & Register
-* Tugas 2 → Explicit Intent
-* Tugas 3 → Implicit Intent
-* Tugas 4 → Menu Android
-* Tugas 5 → RecyclerView
-
----
-
-## 🚀 Cara Menjalankan
-
-1. Clone repository ini
-2. Buka menggunakan Android Studio
-3. Sync Gradle
-4. Jalankan aplikasi di Emulator / Android Device
-
----
+**Gradle 9.2.1** · **AGP 8.7.3** · **Kotlin 2.0.21** · **minSdk 24** · **targetSdk 34**
 
 ## 👨‍💻 Developer
 
-Mahasiswa Mobile Programming
-Universitas
-
----
-
-⭐ Jangan lupa beri star jika project ini membantu.
+**Michael Kemal** — Mobile Programming
