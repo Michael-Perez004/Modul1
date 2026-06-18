@@ -14,5 +14,14 @@ class ProfileActivity : AppCompatActivity() {
         val txtEmail = findViewById<TextView>(R.id.txtEmail)
         val txtPhone = findViewById<TextView>(R.id.txtPhone)
         val txtUsername = findViewById<TextView>(R.id.txtUsername)
+
+        val userPrefs = UserPreferences(this)
+        val session = userPrefs.getSession()
+
+        if (session != null) {
+            txtName.text = userPrefs.getNama(session) ?: "-"
+            txtUsername.text = session
+            txtEmail.text = userPrefs.getEmail(session) ?: "-"
+        }
     }
 }

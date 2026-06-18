@@ -10,18 +10,9 @@
 
     <LinearLayout
         android:orientation="vertical"
-        android:padding="24dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <!-- BACK BUTTON -->
-
-        <ImageView
-            android:id="@+id/ivBack"
-            android:src="@android:drawable/ic_media_previous"
-            android:tint="@color/white"
-            android:layout_width="35dp"
-            android:layout_height="35dp"/>
+        android:layout_height="wrap_content"
+        android:padding="24dp">
 
         <!-- TITLE -->
 
@@ -58,8 +49,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <!-- TITLE FORM -->
-
                 <TextView
                     android:text="Register Account"
                     android:textSize="24sp"
@@ -69,41 +58,32 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
-                <!-- NAMA -->
-
-                <EditText
-                    android:id="@+id/etNama"
-                    android:hint="Nama Lengkap"
-                    android:padding="14dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
                 <!-- EMAIL -->
 
                 <EditText
-                    android:id="@+id/etEmail"
+                    android:id="@+id/edtEmail"
                     android:hint="Email"
                     android:inputType="textEmailAddress"
                     android:padding="14dp"
-                    android:layout_marginTop="14dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-                <!-- USERNAME -->
-
-                <EditText
-                    android:id="@+id/etUsername"
-                    android:hint="Username"
-                    android:padding="14dp"
-                    android:layout_marginTop="14dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
                 <!-- PASSWORD -->
 
                 <EditText
-                    android:id="@+id/etPassword"
+                    android:id="@+id/edtPassword"
                     android:hint="Password"
+                    android:inputType="textPassword"
+                    android:padding="14dp"
+                    android:layout_marginTop="14dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <!-- KONFIRMASI PASSWORD -->
+
+                <EditText
+                    android:id="@+id/edtConfirmPassword"
+                    android:hint="Konfirmasi Password"
                     android:inputType="textPassword"
                     android:padding="14dp"
                     android:layout_marginTop="14dp"
@@ -113,7 +93,7 @@
                 <!-- BUTTON REGISTER -->
 
                 <Button
-                    android:id="@+id/btnBuatAkun"
+                    android:id="@+id/btnRegister"
                     android:text="BUAT AKUN"
                     android:textStyle="bold"
                     android:textColor="@color/white"
@@ -126,7 +106,7 @@
                 <!-- LOGIN -->
 
                 <TextView
-                    android:id="@+id/tvLogin"
+                    android:id="@+id/txtLogin"
                     android:text="Sudah punya akun? Login"
                     android:textColor="@color/orange_bni"
                     android:textStyle="bold"

@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 
 class HomeActivity : AppCompatActivity() {
 
@@ -219,6 +220,8 @@ class HomeActivity : AppCompatActivity() {
             }
 
             R.id.menu_logout -> {
+
+                FirebaseAuth.getInstance().signOut()
 
                 startActivity(
                     Intent(

@@ -2,89 +2,64 @@ package com.example.modul1
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.modul1.databinding.ActivityLoginBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityLoginBinding
+    private lateinit var firebaseAuth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
 
-        val etUser = findViewById<EditText>(R.id.etUser)
-        val etPassword = findViewById<EditText>(R.id.etPassword)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val btnLogin = findViewById<Button>(R.id.btnLogin)
+        firebaseAuth = FirebaseAuth.getInstance()
 
-        val tvRegister = findViewById<TextView>(R.id.tvRegister)
-
-        val tvForgotPassword =
-            findViewById<TextView>(R.id.tvForgotPassword)
-
-        // LOGIN
-
-        btnLogin.setOnClickListener {
-
-            val username = etUser.text.toString().trim()
-
-            val password = etPassword.text.toString().trim()
-
-            if (username.isEmpty() || password.isEmpty()) {
-
-                Toast.makeText(
-                    this,
-                    "Username dan Password harus diisi",
-                    Toast.LENGTH_SHORT
-                ).show()
-
-            } else {
-
-                Toast.makeText(
-                    this,
-                    "Login berhasil",
-                    Toast.LENGTH_SHORT
-                ).show()
-
-                startActivity(
-                    Intent(
-                        this,
-                        HomeActivity::class.java
-                    )
-                )
-
-            }
-
+        binding.btnLogin.setOnClickListener {
+            loginUser()
         }
 
-        // REGISTER
-
-        tvRegister.setOnClickListener {
-
-            startActivity(
-                Intent(
-                    this,
-                    RegisterActivity::class.java
-                )
-            )
-
+        binding.txtRegister.setOnClickListener {
+            startActivity(Intent(this, RegisterActivity::class.java))
         }
 
-        // FORGOT PASSWORD
-
-        tvForgotPassword.setOnClickListener {
-
-            startActivity(
-                Intent(
-                    this,
-                    ForgotPasswordActivity::class.java
-                )
-            )
-
+        binding.txtForgotPassword.setOnClickListener {
+            startActivity(Intent(this, ResetPasswordActivity::class.java))
         }
-
     }
 
+    private fun loginUser() {
+        val email = binding.edtEmail.text.toString()
+        val password = binding.edtPassword.text.toString()
+
+        if (email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "Email dan Password wajib diisi", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        firebaseAuth
+            .signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener {
+                if (it.isSuccessful) {
+                    startActivity(Intent(this, HomeActivity::class.java))
+                    finish()
+                } else {
+                    Toast.makeText(this, it.exception?.message, Toast.LENGTH_LONG).show()
+                }
+            }
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        if (firebaseAuth.currentUser != null) {
+            startActivity(Intent(this, HomeActivity::class.java))
+            finish()
+        }
+    }
 }
